@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  margin: 0;
+  border: 0;
+}
+
+nav.primeira {
+  text-align: center;
+  margin-top: 150px;
+}
+
+nav h1 {
+  font-family: sans-serif;
+  color: #3182d4;
+  font-size: 2.5em;
+  margin: 0;
+}
+
+nav span {
+  font-family: sans-serif;
+  color: black;
+}
+
+nav p {
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444444;
+  margin: 10px auto 0;
+}
+
+.circulo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #00a8d79e;
+  opacity: 15%;
+  margin-top: -120px;
+  margin-left: 172px;
+}
+
+.circulo2 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #00a8d79e;
+  opacity: 15%;
+  margin-top: -168px;
+  margin-left: 706px;
+}
+
+.quadrado {
+  background-color: #b8daf3;
+  width: 458px;
+  height: 215px;
+  margin-top: 224px;
+  margin-left: 150px;
+  box-shadow: 0 9px 11px rgba(0, 0, 0, 0.3);
+}
+
+.hiperfoco {
+  width: 130px;
+  margin-top: 27px;
+}
+
+.hiperfoco2 {
+  margin-top: -190px;
+  font-size: 2px;
+  font-weight: bold;
+  color: black;
+  margin-left: 332px;
+}
+
+.txthiperfoco {
+  color: black;
+  font-weight: 200;
+  width: 278px;
+  margin-top: 31px;
+  margin-left: 191px;
+  font-size: 20px;
+}
+
+.quadrado2 {
+  background-color: #b8daf3;
+  width: 458px;
+  height: 215px;
+  margin-top: -214px;
+  margin-left: 800px;
+  box-shadow: 0 9px 11px rgba(0, 0, 0, 0.3);
+}
+
+.sensibilidade {
+  width: 160px;
+  margin-top: -10px;
+}
+
+.sensibilidade2 {
+  margin-top: -263px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+.txtsensibilidade {
+  color: black;
+  font-weight: 200;
+  width: 280px;
+  margin-top: 22px;
+  margin-left: 197px;
+  font-size: 16px;
+}
+
+.quadrado3 {
+  background-color: #b8daf3;
+  width: 458px;
+  height: 215px;
+  margin-top: 120px;
+  margin-left: 150px;
+  box-shadow: 0 9px 11px rgba(0, 0, 0, 0.3);
+}
+
+.pessoas {
+  width: 160px;
+  margin-top: 47px;
+}
+
+.pessoas2 {
+  margin-top: -203px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+.txtpessoas {
+  color: black;
+  font-weight: 200;
+  width: 229px;
+  margin-top: 22px;
+  margin-left: 197px;
+  font-size: 18px;
+}
+
+.quadrado4 {
+  background-color: #b8daf3;
+  width: 458px;
+  height: 215px;
+  margin-top: -214px;
+  margin-left: 800px;
+  box-shadow: 0 9px 11px rgba(0, 0, 0, 0.3);
+}
+
+.simbolo {
+  width: 160px;
+  margin-top: 47px;
+}
+
+.simbolo2 {
+  margin-top: -195px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+.txtsimbolo {
+  color: black;
+  font-weight: 200;
+  width: 209px;
+  margin-top: 22px;
+  margin-left: 205px;
+  font-size: 18px;
+}
+
+h3 {
+  font-family: sans-serif;
+  color: black;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 163px;
+  margin-bottom: 40px;
+}
+
+h3 span {
+  font-family: sans-serif;
+  color: #2b81be;
+}
+
+.galeria-famosos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 40px;
+  justify-items: center;
+  padding: 0 80px;
+  margin-bottom: 80px;
+}
+
+.famoso-item {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+.famoso-item p {
+  margin-left: 0;
+  text-align: center;
+  padding: 5px 10px;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+.foto-famoso {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+
+.mitos-verdades h2 {
+  font-size: 32px;
+  color: #2b81be;
+  margin-bottom: 20px;
+}
+
+.mitos-verdades p {
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Rodapé */
+.folder {
+  background-color: #2b81be;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.circulo3 {
+  width: 500px;
+  height: 500px;
+  background-color: rgba(70, 133, 220, 0.2);
+  border-radius: 50%;
+  text-align: center;
+}
+
+.mitos {
+  color: #008bef;
+  padding-top: 25px;
+  padding-bottom: 40px;
+}
+
+.textos {
+  text-align: center;
+  gap: 50px;
+}
