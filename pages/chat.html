@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Comunidade | TEA+</title>
+    <link rel="stylesheet" href="../assets/css/chat.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../img/logo.png" alt="Logo do site" />
+            <span>TEA+</span>
+        </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="curio.html">Curiosidades</a>
+            <a href="direitoseleis.html">Direitos e leis</a>
+            <a href="noticias.html">Notícias</a>
+            <a href="clinicasprox.html">Clínicas</a>
+            <a href="diagnostico.html">Identificação</a>
+            <a href="chat.html">Chat Comunidade</a>
+            <a href="login.html" class="entrar">Entrar</a>
+            <a href="cadastro.html" class="cadastrar">Cadastrar</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="chat-hero">
+            <h1>Chat da <span>Comunidade</span></h1>
+            <p>Compartilhe experiências, faça perguntas e conecte-se com outras famílias</p>
+        </section>
+
+        <section class="chat-container">
+            <div class="chat-feed">
+                <!-- Mensagens serão inseridas aqui dinamicamente -->
+            </div>
+
+            <div class="chat-input">
+                <form id="message-form">
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="message-input" 
+                            placeholder="Digite sua mensagem..."
+                            required
+                        >
+                        <button type="submit">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo-footer">
+                    <img src="../img/logo.png" alt="Logo TEA+" />
+                    <span>Teamais</span>
+                </div>
+                <p>Nossa missão é ajudar responsáveis e entender mais sobre o espectro autista e auxiliar com informações verdadeiras sobre como lidar com seus filhos autistas.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Links rápidos</h4>
+                <nav>
+                    <a href="curio.html">Curiosidades</a>
+                    <a href="direitoseleis.html">Direitos e leis</a>
+                    <a href="clinicasprox.html">Clínicas</a>
+                    <a href="noticias.html">Notícias</a>
+                    <a href="chat.html">Chat</a>
+                </nav>
+            </div>
+
+            <div class="footer-section">
+                <h4>Suporte</h4>
+                <nav>
+                    <a href="#">Como usar nosso app</a>
+                    <a href="#">Política de privacidade</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu toggle para mobile
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.menu-toggle').classList.remove('active');
+                document.querySelector('nav').classList.remove('active');
+            });
+        });
+
+        // Funcionalidade do chat
+        const chatFeed = document.querySelector('.chat-feed');
+        const messageForm = document.getElementById('message-form');
+        const messageInput = document.getElementById('message-input');
+
+        // Função para criar uma nova mensagem
+        function createMessage(text, isCurrentUser = true) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isCurrentUser ? 'current-user' : 'other-user'}`;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            
+            const textP = document.createElement('p');
+            textP.textContent = text;
+            
+            const timeSpan = document.createElement('span');
+            timeSpan.className = 'message-time';
+            timeSpan.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            contentDiv.appendChild(textP);
+            contentDiv.appendChild(timeSpan);
+            messageDiv.appendChild(contentDiv);
+            
+            return messageDiv;
+        }
+
+        //estou utilizando para  manipular envio de mensagem
+        messageForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const text = messageInput.value.trim();
+            
+            if (text) {
+                const message = createMessage(text);
+                chatFeed.appendChild(message);
+                chatFeed.scrollTop = chatFeed.scrollHeight;
+                messageInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>

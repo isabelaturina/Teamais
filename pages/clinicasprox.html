@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clínicas Especializadas em Autismo | TEA+</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/clinicas.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="../img/logo.png" alt="Logo do site" />
+      <span>TEA+</span>
+    </div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="curio.html">Curiosidades</a>
+      <a href="direitoseleis.html">Direitos e leis</a>
+      <a href="noticias.html">Notícias</a>
+      <a href="clinicasprox.html">Clínicas</a>
+      <a href="diagnostico.html">Identificação</a>
+      <a href="chat.html">Chat Comunidade</a>
+      <a href="login.html" class="entrar">Entrar</a>
+      <a href="cadastro.html" class="cadastrar">Cadastrar</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-clinicas">
+      <h1>Clínicas <span class="destaque">Especializadas</span> em <span class="destaque">Autismo</span></h1>
+      <p>Encontre clínicas e profissionais especializados em Transtorno do Espectro Autista na sua região. Cuidado especializado e acolhedor para toda a família.</p>
+    </section>
+
+    <section class="busca-clinicas">
+      <div class="busca-container">
+        <div class="input-grupo">
+          <input type="text" placeholder="Busque por nome ou especialidade" />
+          <button class="filtrar">Filtrar resultados</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="lista-clinicas">
+      <div class="clinicas-grid">
+        <div class="clinica-card">
+          <div class="clinica-header">
+            <img src="../img/hospital-icon.png" alt="Ícone de hospital" />
+            <span class="tipo privada">Privada</span>
+          </div>
+          <h3 class="nome-clinica">Nome da clínica</h3>
+          <div class="info-item">
+            <img src="../img/location.png" alt="Ícone de localização" />
+            <span>localização</span>
+          </div>
+          <div class="info-item">
+            <img src="../img/tel.png" alt="Ícone de telefone" />
+            <span>tel</span>
+          </div>
+        </div>
+
+        <div class="clinica-card">
+          <div class="clinica-header">
+            <img src="../img/hospital-icon.png" alt="Ícone de hospital" />
+            <span class="tipo publica">Pública</span>
+          </div>
+          <h3 class="nome-clinica">Nome da clínica</h3>
+          <div class="info-item">
+            <img src="../img/localization.png" alt="Ícone de localização" />
+            <span>localização</span>
+          </div>
+          <div class="info-item">
+            <img src="../img/phone-icon.png" alt="Ícone de telefone" />
+            <span>tel</span>
+          </div>
+        </div>
+
+        <div class="clinica-card">
+          <div class="clinica-header">
+            <img src="../img/hospital-icon.png" alt="Ícone de hospital" />
+            <span class="tipo privada">Privada</span>
+          </div>
+          <h3 class="nome-clinica">Nome da clínica</h3>
+          <div class="info-item">
+            <img src="../img/location-icon.png" alt="Ícone de localização" />
+            <span>localização</span>
+          </div>
+          <div class="info-item">
+            <img src="../img/phone-icon.png" alt="Ícone de telefone" />
+            <span>tel</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="logo-footer">
+          <img src="../img/logo.png" alt="Logo TEA+" />
+          <span>Teamais</span>
+        </div>
+        <p>Nossa missão é ajudar responsáveis e entender mais sobre o espectro autista e auxiliar com informações verdadeiras sobre como lidar com seus filhos autistas.</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Links rápidos</h4>
+        <nav>
+          <a href="curio.html">Curiosidades</a>
+          <a href="direitoseleis.html">Direitos e leis</a>
+          <a href="clinicasprox.html">Clínicas</a>
+          <a href="noticias.html">Notícias</a>
+          <a href="#">Chat</a>
+        </nav>
+      </div>
+
+      <div class="footer-section">
+        <h4>Suporte</h4>
+        <nav>
+          <a href="#">Como usar nosso app</a>
+          <a href="#">Política de privacidade</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      this.classList.toggle('active');
+      document.querySelector('nav').classList.toggle('active');
+    });
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.menu-toggle').classList.remove('active');
+        document.querySelector('nav').classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>

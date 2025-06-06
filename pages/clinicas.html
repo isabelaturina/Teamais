@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clínicas - TEA+</title>
+    <link rel="stylesheet" href="../assets/css/clinicas.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="../img/logo.png" alt="Logo TEA+" />
+        <span>TEA+</span>
+      </div>
+      <button class="menu-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero-clinicas">
+        <h1>Clínicas <span class="destaque">Especializadas</span> em Autismo</h1>
+        <p>Encontre clínicas e profissionais especializados em Transtorno do Espectro Autista na sua região. Cuidado especializado e acolhedor para toda a família.</p>
+      </section>
+
+      <section class="busca-clinicas">
+        <div class="busca-container">
+          <div class="input-grupo">
+            <input type="text" placeholder="Busque por nome ou especialidade" />
+            <button class="filtrar">Filtrar resultados</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="lista-clinicas">
+        <div class="clinicas-grid">
+          <!-- Card 1 -->
+          <div class="clinica-card">
+            <div class="clinica-header">
+              <img src="../img/hospital-icon.png" alt="Ícone da clínica" />
+              <span class="tipo privada">Privada</span>
+            </div>
+            <h3 class="nome-clinica">Nome da clínica</h3>
+            <div class="info-item">
+              <img src="../img/localization.png" alt="Localização" />
+              <span>localização</span>
+            </div>
+            <div class="info-item">
+              <img src="../img/tel.png" alt="Telefone" />
+              <span>tel</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="mobile-nav">
+      <div class="mobile-nav-content">
+        <a href="javascript:history.back()" class="mobile-nav-button">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <a href="#" class="mobile-nav-button">
+          <i class="fas fa-share-alt"></i>
+        </a>
+        <a href="#" class="mobile-nav-button">
+          <i class="fas fa-book-reader"></i>
+        </a>
+        <a href="#" class="mobile-nav-button">
+          <i class="far fa-clone"></i>
+        </a>
+        <a href="#" class="mobile-nav-button text-adjust">
+          Aa
+        </a>
+      </div>
+    </nav>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="logo-footer">
+            <img src="../img/logo.png" alt="Logo TEA+" />
+            <span>TEA+</span>
+          </div>
+          <p>Ajudando responsáveis a entender melhor o espectro autista e encontrar suporte adequado para seus filhos.</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Links Rápidos</h4>
+          <nav>
+            <a href="#">Sobre nós</a>
+            <a href="#">Clínicas</a>
+            <a href="#">Recursos</a>
+            <a href="#">Contato</a>
+          </nav>
+        </div>
+
+        <div class="footer-section">
+          <h4>Suporte</h4>
+          <nav>
+            <a href="#">FAQ</a>
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos de Uso</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelector('.menu-dots').addEventListener('click', function() {
+        this.classList.toggle('active');
+      });
+    </script>
+  </body>
+</html> 

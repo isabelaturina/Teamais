@@ -3,17 +3,103 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notícias</title>
-    <link rel="stylesheet" href="noticias.css" />
+    <title>Notícias sobre Autismo</title>
+    <link rel="stylesheet" href="../assets/css/noticias.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Notícias</h1>
+    <header>
+      <div class="logo">
+        <img src="../img/logo.png" alt="Logo do site" />
+        <span>TEA+</span>
+      </div>
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="curio.html">Curiosidades</a>
+        <a href="direitoseleis.html">Direitos e leis</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="clinicasprox.html">Clínicas</a>
+        <a href="diagnostico.html">Identificação</a>
+        <a href="chat.html">Chat Comunidade</a>
+        <a href="login.html" class="entrar">Entrar</a>
+        <a href="cadastro.html" class="cadastrar">Cadastrar</a>
+      </nav>
+    </header>
+
+    <section class="noticias-hero">
+      <div class="sempre-atualizado">
+        <img src="../img/news-icon.png" alt="Ícone de notícias" />
+        <span>Sempre Atualizado</span>
+      </div>
+      <h1>Notícias sobre <span>Autismo</span></h1>
+      <p>Mantenha-se informado com as últimas pesquisas, avanços científicos e políticas públicas relacionadas ao espectro autista.</p>
+    </section>
+
     <main class="noticias-container" id="noticias-container">
-      <!-- Os cards serão carregados aqui -->
+      <!-- Exemplo de estrutura do card que será gerado pela API -->
+      <article class="noticia-card">
+        <img src="" alt="" />
+        <div class="content">
+          <span class="categoria"></span>
+          <h2></h2>
+          <p></p>
+          <div class="info">
+            <span class="data"></span>
+            <span class="tempo-leitura"></span>
+          </div>
+          <a href="#" class="ler-mais">Ler mais</a>
+        </div>
+      </article>
     </main>
 
-    <footer>©️ 2025 TEA+ | Todos os direitos reservados</footer>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="logo-footer">
+            <img src="../img/logo.png" alt="Logo TEA+" />
+            <span>Teamais</span>
+          </div>
+          <p>Nossa missão é ajudar responsáveis e entender mais sobre o espectro autista e auxiliar com informações verdadeiras sobre como lidar com seus filhos autistas.</p>
+        </div>
 
-    <script src="noticias.js"></script>
+        <div class="footer-section">
+          <h4>Links rápidos</h4>
+          <nav>
+            <a href="#">Curiosidades</a>
+            <a href="#">Direitos e leis</a>
+            <a href="#">Clínicas</a>
+            <a href="#">Notícias</a>
+            <a href="#">Chat</a>
+          </nav>
+        </div>
+
+        <div class="footer-section">
+          <h4>Suporte</h4>
+          <nav>
+            <a href="#">Como usar nosso app</a>
+            <a href="#">Política de privacidade</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+        this.classList.toggle('active');
+        document.querySelector('nav').classList.toggle('active');
+      });
+
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.querySelector('.menu-toggle').classList.remove('active');
+          document.querySelector('nav').classList.remove('active');
+        });
+      });
+    </script>
   </body>
 </html>

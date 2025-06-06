@@ -366,16 +366,56 @@ header nav .cadastrar {
 .menu-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 6px;
   cursor: pointer;
   padding: 5px;
+  width: 30px;
+  height: 30px;
+  position: relative;
 }
 
 .menu-toggle span {
+  display: block;
   width: 25px;
   height: 2px;
-  background-color: #333;
+  background-color: #0066cc;
   transition: all 0.3s ease;
+}
+
+/* Animação do menu para coração */
+.menu-toggle.active span {
+  display: none;
+}
+
+.menu-toggle.active::before {
+  content: "♥";
+  position: absolute;
+  color: #0066cc;
+  font-size: 24px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: heartBeat 1.3s infinite;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  14% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  28% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  42% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 /* Responsividade */
