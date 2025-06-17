@@ -40,7 +40,7 @@
   }
 
   header nav {
-    gap: 2.5rem;
+    gap: 1.2rem;
   }
 }
 
@@ -48,10 +48,6 @@
 @media (max-width: 1279px) {
   .container {
     max-width: 960px;
-  }
-
-  header {
-    padding: 1rem 2rem;
   }
 
   .cards-grid {
@@ -63,24 +59,11 @@
   }
 
   header nav {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   header nav a {
-    font-size: 0.7rem;
-    padding: 0.1rem 0.2rem;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  header nav .entrar,
-  header nav .cadastrar {
-    padding: 0.1rem 0.3rem;
-    flex-shrink: 0;
-  }
-
-  .valores-icones {
-    flex-wrap: wrap;
+    font-size: 0.9rem;
   }
 }
 
@@ -91,25 +74,17 @@
     padding: 0 2rem;
   }
 
-  header {
-    padding: 1rem 1rem;
-  }
-
   header nav {
-    gap: 0.4rem;
+    gap: 0.8rem;
   }
 
   header nav a {
-    font-size: 0.6rem;
-    padding: 0.05rem 0.1rem;
-    white-space: nowrap;
-    flex-shrink: 0;
+    font-size: 0.85rem;
   }
 
   header nav .entrar,
   header nav .cadastrar {
-    padding: 0.05rem 0.2rem;
-    flex-shrink: 0;
+    padding: 0.4rem 1.2rem;
   }
 
   .hero {

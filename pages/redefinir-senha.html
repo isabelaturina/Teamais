@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Senha - TeamAIS</title>
+    <link rel="stylesheet" href="../assets/css/redefinir-senha.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <a href="login.html" class="voltar-button">Voltar</a>
+        <h2>Alterar senha</h2>
+        
+        <p class="description">A senha deve ter no mínimo 6 caracteres e incluir uma combinação de números, letras e caracteres especiais (5@#%).</p>
+
+        <form id="resetPasswordForm">
+            <div class="password-input-wrapper">
+                <input type="password" id="novaSenha" name="novaSenha" required placeholder="Nova senha">
+                <button type="button" class="toggle-password" aria-label="Mostrar senha">
+                    <i class="fas fa-eye-slash"></i>
+                </button>
+            </div>
+
+            <div class="password-input-wrapper">
+                <input type="password" id="confirmarSenha" name="confirmarSenha" required placeholder="Confirme sua nova senha">
+                <button type="button" class="toggle-password" aria-label="Mostrar senha">
+                    <i class="fas fa-eye-slash"></i>
+                </button>
+            </div>
+
+            <button type="submit">Alterar Senha</button>
+        </form>
+
+        <div class="notification">
+            Enviamos um e-mail para algumacoisa@gmail.com com um link para redefinir sua senha.
+        </div>
+    </div>
+
+    <script src="../assets/js/redefinir-senha.js"></script>
+</body>
+</html>

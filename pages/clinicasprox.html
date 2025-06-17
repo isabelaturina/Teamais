@@ -13,8 +13,14 @@
       <img src="../img/logo.png" alt="Logo do site" />
       <span>TEA+</span>
     </div>
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav>
       <a href="index.html">Início</a>
+      <a href="entendendo-autismo.html">Entendendo o Autismo</a>
       <a href="curio.html">Curiosidades</a>
       <a href="direitoseleis.html">Direitos e leis</a>
       <a href="noticias.html">Notícias</a>
@@ -34,62 +40,20 @@
 
     <section class="busca-clinicas">
       <div class="busca-container">
-        <div class="input-grupo">
-          <input type="text" placeholder="Busque por nome ou especialidade" />
-          <button class="filtrar">Filtrar resultados</button>
+        <div class="busca-form">
+          <button id="buscarClinicas" class="btn-buscar">Buscar Clínicas Próximas</button>
+          <div id="status" class="status-message"></div>
         </div>
+        <div id="resultado" class="clinicas-lista"></div>
       </div>
     </section>
 
     <section class="lista-clinicas">
-      <div class="clinicas-grid">
-        <div class="clinica-card">
-          <div class="clinica-header">
-            <img src="../img/hospital-icon.png" alt="Ícone de hospital" />
-            <span class="tipo privada">Privada</span>
-          </div>
-          <h3 class="nome-clinica">Nome da clínica</h3>
-          <div class="info-item">
-            <img src="../img/location.png" alt="Ícone de localização" />
-            <span>localização</span>
-          </div>
-          <div class="info-item">
-            <img src="../img/tel.png" alt="Ícone de telefone" />
-            <span>tel</span>
-          </div>
-        </div>
-
-        <div class="clinica-card">
-          <div class="clinica-header">
-            <img src="../img/hospital-icon.png" alt="Ícone de hospital" />
-            <span class="tipo publica">Pública</span>
-          </div>
-          <h3 class="nome-clinica">Nome da clínica</h3>
-          <div class="info-item">
-            <img src="../img/localization.png" alt="Ícone de localização" />
-            <span>localização</span>
-          </div>
-          <div class="info-item">
-            <img src="../img/phone-icon.png" alt="Ícone de telefone" />
-            <span>tel</span>
-          </div>
-        </div>
-
-        <div class="clinica-card">
-          <div class="clinica-header">
-            <img src="../img/hospital-icon.png" alt="Ícone de hospital" />
-            <span class="tipo privada">Privada</span>
-          </div>
-          <h3 class="nome-clinica">Nome da clínica</h3>
-          <div class="info-item">
-            <img src="../img/location-icon.png" alt="Ícone de localização" />
-            <span>localização</span>
-          </div>
-          <div class="info-item">
-            <img src="../img/phone-icon.png" alt="Ícone de telefone" />
-            <span>tel</span>
-          </div>
-        </div>
+      <h2>Clínicas Encontradas</h2>
+      <p class="subtitulo">Resultados da sua busca por clínicas e profissionais</p>
+      <div class="clinicas-grid" id="clinicas-results">
+        <!-- Clínicas serão carregadas aqui via JavaScript -->
+        <p id="no-clinics-message" style="text-align: center; margin-top: 20px; color: #666;">Nenhuma clínica encontrada ainda. Tente buscar ou usar sua localização.</p>
       </div>
     </section>
   </main>
@@ -125,18 +89,6 @@
     </div>
   </footer>
 
-  <script>
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
-      this.classList.toggle('active');
-      document.querySelector('nav').classList.toggle('active');
-    });
-
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelector('.menu-toggle').classList.remove('active');
-        document.querySelector('nav').classList.remove('active');
-      });
-    });
-  </script>
+  <script src="../assets/js/clinicas-api.js"></script>
 </body>
 </html>

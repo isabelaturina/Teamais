@@ -62,9 +62,9 @@ header nav .entrar {
     border: 2px solid #0066cc;
     border-radius: 20px;
     color: #0066cc;
-}
-
-header nav .cadastrar {
+  }
+  
+  header nav .cadastrar {
     padding: 0.5rem 1.5rem;
     background-color: #0095FF;
     border-radius: 20px;
@@ -74,9 +74,9 @@ header nav .cadastrar {
     font-weight: 600;
     border: none;
     overflow: hidden;
-}
-
-header nav .cadastrar::before {
+  }
+  
+  header nav .cadastrar::before {
     content: '';
     position: absolute;
     top: 0;
@@ -84,23 +84,23 @@ header nav .cadastrar::before {
     width: 100%;
     height: 100%;
     background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.6),
-        transparent
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.6),
+      transparent
     );
     transition: 0.5s;
-}
-
-header nav .cadastrar:hover {
+  }
+  
+  header nav .cadastrar:hover {
     background-color: #33AAFF;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 149, 255, 0.3);
-}
-
-header nav .cadastrar:hover::before {
+  }
+  
+  header nav .cadastrar:hover::before {
     left: 100%;
-}
+  }
 
 /* Menu hamburguer para mobile */
 .menu-toggle {
@@ -124,6 +124,7 @@ header nav .cadastrar:hover::before {
     transition: all 0.3s ease;
 }
 
+/* Animação do menu para coração */
 .menu-toggle.active span {
     display: none;
 }
@@ -140,11 +141,21 @@ header nav .cadastrar:hover::before {
 }
 
 @keyframes heartBeat {
-    0% { transform: translate(-50%, -50%) scale(1); }
-    14% { transform: translate(-50%, -50%) scale(1.1); }
-    28% { transform: translate(-50%, -50%) scale(1); }
-    42% { transform: translate(-50%, -50%) scale(1.1); }
-    70% { transform: translate(-50%, -50%) scale(1); }
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    14% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    28% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    42% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 /* Chat Hero Section */
@@ -193,57 +204,42 @@ header nav .cadastrar:hover::before {
     gap: 1rem;
 }
 
-/* Mensagens do Chat */
-.chat-message {
+.message {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.message.current-user {
+    justify-content: flex-end;
+}
+
+.message-content {
     max-width: 70%;
     padding: 1rem;
     border-radius: 15px;
     position: relative;
-    background: #f0f2f5;
-    color: #333;
-    align-self: flex-start;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    box-shadow: 0 2px 6px rgba(0, 102, 204, 0.1);
-    animation: fadeInUp 0.3s ease;
 }
 
-.chat-message .chat-nome {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #0066cc;
-}
-
-.chat-message .chat-texto {
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.chat-message .chat-hora {
-    font-size: 0.8rem;
-    opacity: 0.7;
-    text-align: right;
-}
-
-/* Mensagens do usuário à direita */
-.chat-message:nth-child(odd) {
+.current-user .message-content {
     background: linear-gradient(135deg, #0066cc 0%, #33CCFF 100%);
     color: white;
-    align-self: flex-end;
 }
 
-.chat-message:nth-child(odd) .chat-nome {
-    color: #ffffff;
+.other-user .message-content {
+    background: #f0f2f5;
+    color: #333;
 }
 
-.chat-message:nth-child(odd) .chat-hora {
-    color: #e0e0e0;
+.message-content p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
 }
 
-@keyframes fadeInUp {
-    from { transform: translateY(10px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+.message-time {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    display: block;
+    text-align: right;
 }
 
 /* Chat Input */

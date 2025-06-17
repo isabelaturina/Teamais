@@ -18,6 +18,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 0 15px rgba(112, 222, 254, 0.6);
     box-shadow: 0 0 15px rgba(112, 222, 254, 0.5);
     position: sticky;
     top: 0;
@@ -62,9 +63,9 @@ header nav .entrar {
     border: 2px solid #0066cc;
     border-radius: 20px;
     color: #0066cc;
-}
-
-header nav .cadastrar {
+  }
+  
+  header nav .cadastrar {
     padding: 0.5rem 1.5rem;
     background-color: #0095FF;
     border-radius: 20px;
@@ -74,9 +75,9 @@ header nav .cadastrar {
     font-weight: 600;
     border: none;
     overflow: hidden;
-}
-
-header nav .cadastrar::before {
+  }
+  
+  header nav .cadastrar::before {
     content: '';
     position: absolute;
     top: 0;
@@ -84,23 +85,23 @@ header nav .cadastrar::before {
     width: 100%;
     height: 100%;
     background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.6),
-        transparent
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.6),
+      transparent
     );
     transition: 0.5s;
-}
-
-header nav .cadastrar:hover {
+  }
+  
+  header nav .cadastrar:hover {
     background-color: #33AAFF;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 149, 255, 0.3);
-}
-
-header nav .cadastrar:hover::before {
+  }
+  
+  header nav .cadastrar:hover::before {
     left: 100%;
-}
+  }
 
 /* Menu hamburguer para mobile */
 .menu-toggle {
@@ -174,7 +175,6 @@ header nav .cadastrar:hover::before {
         flex-direction: column;
         padding: 1rem;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        gap: 1.5rem;
     }
 
     header nav.active {
@@ -185,12 +185,16 @@ header nav .cadastrar:hover::before {
         display: flex;
     }
 
-    .menu-toggle.active span:nth-child(1),
-    .menu-toggle.active span:nth-child(2),
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
     .menu-toggle.active span:nth-child(3) {
-        display: none;
-        opacity: 1;
-        transform: none;
+        transform: rotate(-45deg) translate(6px, -6px);
     }
 }
 

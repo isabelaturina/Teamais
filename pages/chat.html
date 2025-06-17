@@ -20,6 +20,7 @@
         </div>
         <nav>
             <a href="index.html">Início</a>
+            <a href="entendendo-autismo.html">Entendendo o Autismo</a>
             <a href="curio.html">Curiosidades</a>
             <a href="direitoseleis.html">Direitos e leis</a>
             <a href="noticias.html">Notícias</a>
@@ -33,13 +34,13 @@
 
     <main>
         <section class="chat-hero">
-            <h1>Chat da <span>Comunidade</span></h1>
-            <p>Compartilhe experiências, faça perguntas e conecte-se com outras famílias</p>
+            <h1><span>Converse com a Bea</span></h1>
+            <p> Um espaço seguro para conversar com nossa IA amiga.</p>
         </section>
 
         <section class="chat-container">
             <div class="chat-feed">
-                <!-- Mensagens serão inseridas aqui dinamicamente -->
+            
             </div>
 
             <div class="chat-input">
@@ -90,58 +91,62 @@
     </footer>
 
     <script>
-        // Menu toggle para mobile
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('nav').classList.toggle('active');
-        });
-
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.menu-toggle').classList.remove('active');
-                document.querySelector('nav').classList.remove('active');
-            });
-        });
-
-        // Funcionalidade do chat
-        const chatFeed = document.querySelector('.chat-feed');
+      document.addEventListener('DOMContentLoaded', () => {
         const messageForm = document.getElementById('message-form');
         const messageInput = document.getElementById('message-input');
+        const chatFeed = document.querySelector('.chat-feed');
 
-        // Função para criar uma nova mensagem
-        function createMessage(text, isCurrentUser = true) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${isCurrentUser ? 'current-user' : 'other-user'}`;
-            
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'message-content';
-            
-            const textP = document.createElement('p');
-            textP.textContent = text;
-            
-            const timeSpan = document.createElement('span');
-            timeSpan.className = 'message-time';
-            timeSpan.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            
-            contentDiv.appendChild(textP);
-            contentDiv.appendChild(timeSpan);
-            messageDiv.appendChild(contentDiv);
-            
-            return messageDiv;
+        function createMessage(text, isUser = true) {
+          const div = document.createElement('div');
+          div.classList.add('chat-message');
+          div.innerHTML = `
+            <span class="chat-nome">${isUser ? 'Você' : 'Bea'}</span>
+            <span class="chat-texto">${text}</span>
+            <span class="chat-hora">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+          `;
+          return div;
         }
 
-        //estou utilizando para  manipular envio de mensagem
         messageForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const text = messageInput.value.trim();
-            
-            if (text) {
-                const message = createMessage(text);
-                chatFeed.appendChild(message);
-                chatFeed.scrollTop = chatFeed.scrollHeight;
-                messageInput.value = '';
-            }
+          e.preventDefault();
+          const text = messageInput.value.trim();
+
+          if (text) {
+            const userMessage = createMessage(text, true);
+            chatFeed.appendChild(userMessage);
+            chatFeed.scrollTop = chatFeed.scrollHeight;
+            messageInput.value = '';
+
+            fetch('http://localhost:8080/chat', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ mensagem: text })
+            })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error("Erro na resposta da API");
+              }
+              return response.text();
+            })
+            .then(data => {
+              const resposta = data && data.trim() !== '' 
+                ? data 
+                : 'Desculpe, não consegui entender sua pergunta. Pode tentar reformular?';
+              const aiMessage = createMessage(resposta, false);
+              chatFeed.appendChild(aiMessage);
+              chatFeed.scrollTop = chatFeed.scrollHeight;
+            })
+            .catch(error => {
+              console.error('Erro ao se comunicar com a API:', error);
+              const fallback = createMessage("Desculpe, estou com dificuldades técnicas. Tente novamente mais tarde.", false);
+              chatFeed.appendChild(fallback);
+              chatFeed.scrollTop = chatFeed.scrollHeight;
+            });
+          }
         });
+      });
     </script>
 </body>
 </html>
