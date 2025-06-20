@@ -4,32 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Clínicas Especializadas em Autismo | TEA+</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/clinicas.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="../img/logo.png" alt="Logo do site" />
-      <span>TEA+</span>
+    <div class="header-container">
+      <div class="logo">
+        <img src="../img/logo.png" alt="Logo do site" />
+        <span>Teamais</span>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Início</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="clinicasprox.html">Clínicas</a>
+        <a href="chat.html">IA bea</a>
+        <a href="login.html" class="entrar">Entrar</a>
+        <a href="cadastro.html" class="cadastrar">Cadastrar</a>
+      </nav>
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
-    <div class="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="entendendo-autismo.html">Entendendo o Autismo</a>
-      <a href="curio.html">Curiosidades</a>
-      <a href="direitoseleis.html">Direitos e leis</a>
-      <a href="noticias.html">Notícias</a>
-      <a href="clinicasprox.html">Clínicas</a>
-      <a href="diagnostico.html">Identificação</a>
-      <a href="chat.html">Chat Comunidade</a>
-      <a href="login.html" class="entrar">Entrar</a>
-      <a href="cadastro.html" class="cadastrar">Cadastrar</a>
-    </nav>
   </header>
 
   <main>
@@ -90,5 +90,35 @@
   </footer>
 
   <script src="../assets/js/clinicas-api.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mainNav = document.querySelector('.main-nav');
+
+      menuToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+      });
+
+      // Fechar o menu ao clicar em um link
+      mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (mainNav.classList.contains('active')) {
+            mainNav.classList.remove('active');
+            menuToggle.classList.remove('active');
+          }
+        });
+      });
+
+      // Fechar o menu ao redimensionar a tela
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+          mainNav.classList.remove('active');
+          menuToggle.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

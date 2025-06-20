@@ -4,33 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat Comunidade | TEA+</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/chat.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+  
+  <header>
+    <div class="header-container">
         <div class="logo">
             <img src="../img/logo.png" alt="Logo do site" />
-            <span>TEA+</span>
         </div>
+        <nav class="main-nav">
+            <a href="index.html">Início</a>
+            <a href="perfil.html">Perfil</a>
+            <a href="noticias.html">Notícias</a>
+            <a href="clinicasprox.html">Clínicas</a>
+            <a href="chat.html">IA bea</a>
+            <a href="login.html" class="entrar">Entrar</a>
+            <a href="cadastro.html" class="cadastrar">Cadastrar</a>
+        </nav>
         <div class="menu-toggle">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <nav>
-            <a href="index.html">Início</a>
-            <a href="entendendo-autismo.html">Entendendo o Autismo</a>
-            <a href="curio.html">Curiosidades</a>
-            <a href="direitoseleis.html">Direitos e leis</a>
-            <a href="noticias.html">Notícias</a>
-            <a href="clinicasprox.html">Clínicas</a>
-            <a href="diagnostico.html">Identificação</a>
-            <a href="chat.html">Chat Comunidade</a>
-            <a href="login.html" class="entrar">Entrar</a>
-            <a href="cadastro.html" class="cadastrar">Cadastrar</a>
-        </nav>
-    </header>
+    </div>
+</header>
 
     <main>
         <section class="chat-hero">
@@ -117,7 +117,7 @@
             chatFeed.scrollTop = chatFeed.scrollHeight;
             messageInput.value = '';
 
-            fetch('http://localhost:8080/chat', {
+            fetch('https://api-chat-pc6t.onrender.com/chat',  {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -145,6 +145,25 @@
               chatFeed.scrollTop = chatFeed.scrollHeight;
             });
           }
+        });
+
+        // Menu mobile igual ao style.css
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+
+        menuToggle.addEventListener('click', function() {
+          mainNav.classList.toggle('active');
+          menuToggle.classList.toggle('active');
+        });
+
+        // Fechar o menu ao clicar em um link (opcional)
+        mainNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            if (mainNav.classList.contains('active')) {
+              mainNav.classList.remove('active');
+              menuToggle.classList.remove('active');
+            }
+          });
         });
       });
     </script>

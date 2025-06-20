@@ -4,32 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entendendo o Autismo - TEA+</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/entendendo-autismo.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+ 
     <header>
-        <div class="logo">
-            <img src="../img/logo.png" alt="Logo do site" />
-            <span>TEA+</span>
+        <div class="header-container">
+            <div class="logo">
+                <img src="../img/logo.png" alt="Logo do site" />
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Início</a>
+                <a href="perfil.html">Perfil</a>
+                <a href="noticias.html">Notícias</a>
+                <a href="clinicasprox.html">Clínicas</a>
+                <a href="chat.html">IA bea</a>
+                <a href="login.html" class="entrar">Entrar</a>
+                <a href="cadastro.html" class="cadastrar">Cadastrar</a>
+            </nav>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <div class="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav>
-            <a href="index.html">Início</a>
-            <a href="curio.html">Curiosidades</a>
-            <a href="direitoseleis.html">Direitos e leis</a>
-            <a href="noticias.html">Notícias</a>
-            <a href="clinicasprox.html">Clínicas</a>
-            <a href="diagnostico.html">Identificação</a>
-            <a href="chat.html">Chat Comunidade</a>
-            <a href="login.html" class="entrar">Entrar</a>
-            <a href="cadastro.html" class="cadastrar">Cadastrar</a>
-        </nav>
     </header>
+
 
     <main class="hero-section">
         <div class="hero-content">
@@ -63,17 +66,17 @@
         <h2>O que é o Autismo?</h2>
         <div class="info-cards">
             <div class="info-card">
-                <img src="../img/simbolotea.png" alt="Ícone de cérebro" />
+                <img src="../img/neuroloica-icon.png" alt="Ícone de cérebro" />
                 <h3>Condição Neurológica</h3>
                 <p>O autismo é uma condição neurológica que afeta o desenvolvimento cerebral e a forma como a pessoa interage com o mundo.</p>
             </div>
             <div class="info-card">
-                <img src="../img/espctro-icon.png" alt="Ícone de espectro" />
+                <img src="../img/infocard2-icon.png" alt="Ícone de espectro" />
                 <h3>Espectro Amplo</h3>
                 <p>Compreende uma variedade de manifestações e intensidades, afetando cada pessoa de maneira única.</p>
             </div>
             <div class="info-card">
-                <img src="../img/forças-icon.png" alt="Ícone de suporte" />
+                <img src="../img/infocard3-icon.png" alt="Ícone de suporte" />
                 <h3>Força e Talentos</h3>
                 <p>Pessoas autistas podem desenvolver habilidades extraordinárias quando recebem suporte adequado.</p>
             </div>
@@ -512,78 +515,67 @@
     </section>
 
     <script>
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('nav').classList.toggle('active');
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Script do Menu Hambúrguer ---
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
         });
+    }
 
-        // Fecha o menu ao clicar em um link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.menu-toggle').classList.remove('active');
-                document.querySelector('nav').classList.remove('active');
+    // --- Script para Acordeões de Conteúdo (Sinais, Níveis, etc.) ---
+    // Permite que múltiplos itens fiquem abertos
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement; // .accordion-item
+            item.classList.toggle('active');
+            
+            const content = header.nextElementSibling; // .accordion-content
+            if (item.classList.contains('active')) {
+                // Define a altura máxima para o conteúdo se desdobrar
+                content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+                // Remove a altura máxima para o conteúdo se dobrar
+                content.style.maxHeight = null;
+            }
+        });
+    });
+
+    // --- Script para a Seção de FAQ ---
+    // Botões de categoria
+    document.querySelectorAll('.category-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const categoryId = button.getAttribute('data-category');
+            
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            document.querySelectorAll('.faq-category').forEach(category => category.classList.remove('active'));
+            document.getElementById(categoryId).classList.add('active');
+        });
+    });
+
+    // Acordeão das perguntas (apenas uma aberta por vez)
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const currentItem = question.closest('.faq-item');
+            const wasActive = currentItem.classList.contains('active');
+
+            // Fecha todos os itens de FAQ antes de abrir um novo
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
             });
-        });
 
-        // Acordeão
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const accordionItem = header.parentElement;
-                const content = header.nextElementSibling;
-                const arrow = header.querySelector('.accordion-arrow');
-                
-                // Fecha todos os outros acordeões
-                document.querySelectorAll('.accordion-item').forEach(item => {
-                    if (item !== accordionItem) {
-                        item.classList.remove('active');
-                        item.querySelector('.accordion-content').style.maxHeight = null;
-                        item.querySelector('.accordion-arrow').style.transform = 'rotate(0deg)';
-                    }
-                });
-
-                // Abre/fecha o acordeão clicado
-                accordionItem.classList.toggle('active');
-                if (accordionItem.classList.contains('active')) {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                    arrow.style.transform = 'rotate(180deg)';
-                } else {
-                    content.style.maxHeight = null;
-                    arrow.style.transform = 'rotate(0deg)';
-                }
-            });
+            // Se o item clicado não estava ativo, ele se torna ativo
+            if (!wasActive) {
+                currentItem.classList.add('active');
+            }
         });
-
-        // Script para as categorias do FAQ
-        document.querySelectorAll('.category-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active de todos os botões e conteúdos
-                document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-                document.querySelectorAll('.faq-category').forEach(category => category.classList.remove('active'));
-                
-                // Adiciona active ao botão clicado e seu conteúdo correspondente
-                button.classList.add('active');
-                const categoryId = button.getAttribute('data-category');
-                document.getElementById(categoryId).classList.add('active');
-            });
-        });
-
-        // Script para expandir/colapsar perguntas
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                const isActive = item.classList.contains('active');
-                
-                // Fecha todas as outras perguntas
-                document.querySelectorAll('.faq-item').forEach(faqItem => {
-                    faqItem.classList.remove('active');
-                });
-                
-                // Abre/fecha a pergunta clicada
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
+    });
+});
     </script>
     <footer class="footer">
         <div class="footer-content">

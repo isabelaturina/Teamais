@@ -15,117 +15,111 @@ body {
   flex-direction: column;
 }
 
-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 70px);
-}
-
-/* Header */
-header {
-  background-color: #ffffff;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 0 15px rgba(112, 222, 254, 0.5);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  height: 80px;
-}
-
-header .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-header .logo img {
-  height: 40px;
-  width: auto;
-}
-
-header .logo span {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #0066cc;
-}
-
-header nav {
-  display: none;
-  position: fixed;
-  top: 80px;
-  left: 0;
-  right: 0;
-  background: white;
-  flex-direction: column;
-  padding: 1rem;
-  align-items: center;
-  box-shadow: none;
-  z-index: 9997;
-}
-
-header nav.active {
-  display: flex;
-}
-
+/* Menu Toggle (botão de hambúrguer) */
 .menu-toggle {
-  display: flex;
+  display: none; /* Oculto por padrão em desktop */
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
   cursor: pointer;
-  padding: 5px;
-  width: 30px;
-  height: 30px;
-  position: relative;
-  background: none;
-  border: none;
+  z-index: 10; /* Garante que o ícone esteja acima do menu */
 }
 
 .menu-toggle span {
   display: block;
-  width: 25px;
+  width: 100%;
   height: 2px;
-  background-color: #0066cc;
-  transition: all 0.3s ease;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
 }
 
-/* Animação do menu para coração */
-.menu-toggle.active span {
-  display: none;
+/* Animação do botão de hambúrguer para 'X' */
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
 }
 
-.menu-toggle.active::before {
-  content: "♥";
-  position: absolute;
-  color: #0066cc;
-  font-size: 24px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: heartBeat 1.3s infinite;
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
 }
 
-@keyframes heartBeat {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex; /* Mostra o botão de hambúrguer em telas menores */
   }
-  14% {
-    transform: translate(-50%, -50%) scale(1.1);
+  
+  .main-nav {
+    display: none; /* Esconde o menu de navegação em telas menores */
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Abaixo do header */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-100%); /* Esconde o menu para fora da tela */
+    z-index: 9999; /* Z-index muito alto para garantir que apareça */
   }
-  28% {
-    transform: translate(-50%, -50%) scale(1);
+
+  .main-nav.active {
+    display: flex !important; /* Força a exibição quando ativo */
+    transform: translateY(0) !important; /* Desliza o menu para a posição */
+    visibility: visible !important;
+    opacity: 1 !important;
   }
-  42% {
-    transform: translate(-50%, -50%) scale(1.1);
+
+  .main-nav a {
+    padding: 0.8rem 1rem;
+    width: 90%;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
   }
-  70% {
-    transform: translate(-50%, -50%) scale(1);
+
+  .main-nav a:last-child {
+    border-bottom: none;
   }
+
+  .main-nav a:hover {
+    background-color: #f5f5f5;
+    color: #0095FF;
+  }
+
+  /* Estilos específicos para os botões */
+  .main-nav .entrar {
+    background-color: transparent;
+    border: 2px solid #0095FF;
+    color: #0095FF;
+    border-radius: 20px;
+    margin: 0.5rem auto;
+    width: 80%;
+  }
+
+  .main-nav .cadastrar {
+    background-color: #0095FF;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    margin: 0.5rem auto;
+    width: 80%;
+  }
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 60px); /* Ajustado para altura do header global */
 }
 
 /* Hero Section */
@@ -134,7 +128,7 @@ header nav.active {
   padding: 40px 20px;
   background-color: #F5F9FF;
   max-width: 800px;
-  margin: 100px auto 0;
+  margin: 0 auto;
 }
 
 .hero-clinicas h1 {
@@ -310,78 +304,82 @@ header nav.active {
   align-self: flex-start;
 }
 
-/* Footer */
-.footer {
-  background-color: #0066CC;
-  color: white;
-  padding: 40px 0;
-  margin-top: auto;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 40px;
-}
-
-.footer-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.logo-footer {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo-footer img {
-  height: 40px;
-}
-
-.logo-footer span {
-  font-size: 24px;
-  font-weight: 600;
-}
-
-.footer-section p {
-  font-size: 14px;
-  line-height: 1.5;
-  opacity: 0.9;
-}
-
-.footer-section h4 {
-  color: white;
-  margin-bottom: 20px;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.footer-section nav {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.footer-section nav a {
-  color: white;
-  text-decoration: none;
-  opacity: 0.9;
-  transition: opacity 0.3s;
-  font-size: 14px;
-}
-
-.footer-section nav a:hover {
-  opacity: 1;
-}
-
 /* Navegação Mobile Inferior */
 .mobile-nav {
   display: none;
+}
+
+/* MENU MOBILE TOPBAR SOBREPOSTO */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    width: 38px;
+    height: 38px;
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    z-index: 10000;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: #0095FF;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    z-index: 9999;
+    padding: 80px 0 1.5rem 0;
+    gap: 1.2rem;
+    min-height: 100vh;
+  }
+  .main-nav.active {
+    display: flex;
+  }
+  .main-nav a {
+    font-size: 1.2rem;
+    color: #222;
+    text-decoration: none;
+    padding: 0.7rem 0;
+    width: 100vw;
+    text-align: center;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .main-nav a:hover {
+    background: #f0f8ff;
+    color: #0095FF;
+  }
 }
 
 /* Responsividade */
@@ -449,26 +447,8 @@ header nav.active {
     font-size: 16px;
   }
 
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    text-align: center;
-  }
-
-  .footer-section {
-    align-items: center;
-  }
-
-  .logo-footer {
-    justify-content: center;
-  }
-
   .lista-clinicas {
     padding: 20px;
-  }
-
-  .footer {
-    padding: 30px 0;
   }
 }
 
@@ -515,14 +495,6 @@ header nav.active {
     font-size: 15px;
   }
 
-  .footer-section p {
-    font-size: 13px;
-  }
-
-  .footer-section nav a {
-    font-size: 13px;
-  }
-
   .lista-clinicas h2 {
     font-size: 20px;
   }
@@ -566,159 +538,6 @@ header nav.active {
 
   .clinica-card {
     padding: 25px;
-  }
-}
-
-@media (max-width: 575px) {
-  header {
-    height: 70px;
-    padding: 0.8rem;
-  }
-
-  .hero-clinicas {
-    margin-top: 90px;
-  }
-
-  .menu-toggle {
-    width: 25px;
-    height: 25px;
-  }
-
-  .menu-toggle span {
-    width: 20px;
-  }
-
-  header .logo img {
-    height: 30px;
-  }
-
-  header .logo span {
-    font-size: 1.2rem;
-  }
-
-  .hero-clinicas {
-    padding: 30px 20px;
-  }
-
-  .hero-clinicas h1 {
-    font-size: 24px;
-  }
-}
-
-/* Responsividade do Header - Bloco unificado e corrigido */
-@media (max-width: 991px) {
-  header {
-    padding: 1rem;
-  }
-
-  header nav {
-    display: none; /* Controlado pelo .active */
-    position: fixed; /* Mantém a posição fixa */
-    top: 70px; /* Ajustado para corresponder à altura do header em telas menores */
-    left: 0;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    padding: 0.5rem 0; /* Padding mais equilibrado */
-    align-items: center; /* Centraliza os itens horizontalmente */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para o menu */
-    z-index: 9997;
-  }
-
-  header nav.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
-
-  /* Animação de coração */
-  .menu-toggle.active span:nth-child(1),
-  .menu-toggle.active span:nth-child(2),
-  .menu-toggle.active span:nth-child(3) {
-    display: none;
-    opacity: 1;
-    transform: none;
-  }
-
-  /* Estilização para links e botões dentro do menu mobile */
-  header nav a {
-    width: 100%;
-    text-align: center; /* Centraliza o texto dos links */
-    font-size: 0.95rem; /* Tamanho de fonte mais legível */
-    padding: 0.6rem 0; /* Padding mais confortável */
-    color: #333;
-    box-sizing: border-box;
-    text-decoration: none; /* Mantém sem sublinhado de texto */
-    border: none; /* Remove todas as bordas */
-    outline: none; /* Remove contornos */
-    box-shadow: none; /* Remove sombras que pareçam linhas */
-    border-bottom: 1px solid #e0e0e0; /* Linha separadora sutil */
-    margin-bottom: 0.3rem; /* Espaçamento equilibrado entre os links */
-  }
-
-  header nav a:hover {
-    color: #0066cc;
-  }
-
-  header nav a:last-of-type {
-    border-bottom: none; /* Remove a linha do último item */
-    margin-bottom: 0; /* Remove a margem do último link */
-  }
-
-  header nav .entrar,
-  header nav .cadastrar {
-    width: 80%; /* Largura para os botões */
-    margin: 0.5rem auto; /* Espaçamento equilibrado para os botões */
-    text-align: center;
-    padding: 0.5rem 1.2rem; /* Padding mais confortável para os botões */
-    font-size: 0.9rem; /* Tamanho de fonte adequado para os botões */
-    border-radius: 20px;
-  }
-
-  header nav .entrar {
-    background-color: transparent;
-    border: 2px solid #0066cc;
-    color: #0066cc;
-  }
-
-  header nav .cadastrar {
-    padding: 0.5rem 1.5rem;
-    background-color: #0095FF;
-    border-radius: 20px;
-    color: white;
-    position: relative;
-    transition: all 0.4s ease;
-    font-weight: 600;
-    border: none;
-    overflow: hidden;
-  }
-
-  header nav .cadastrar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      120deg,
-      transparent,
-      rgba(255, 255, 255, 0.6),
-      transparent
-    );
-    transition: 0.5s;
-  }
-
-  header nav .cadastrar:hover {
-    background-color: #33AAFF;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 149, 255, 0.3);
-  }
-
-  header nav .cadastrar:hover::before {
-    left: 100%;
   }
 }
 

@@ -5,32 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Como Identificar o Autismo</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/diagnosticos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="../img/logo.png" alt="Logo do site" />
-            <span>TEA+</span>
+        <div class="header-container">
+            <div class="logo">
+                <img src="../img/logo.png" alt="Logo do site" />
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Início</a>
+                <a href="perfil.html">Perfil</a>
+                <a href="noticias.html">Notícias</a>
+                <a href="clinicasprox.html">Clínicas</a>
+                <a href="chat.html">IA bea</a>
+                <a href="login.html" class="entrar">Entrar</a>
+                <a href="cadastro.html" class="cadastrar">Cadastrar</a>
+            </nav>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <div class="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav>
-            <a href="index.html">Início</a>
-            <a href="entendendo-autismo.html">Entendendo o Autismo</a>
-            <a href="curio.html">Curiosidades</a>
-            <a href="direitoseleis.html">Direitos e leis</a>
-            <a href="noticias.html">Notícias</a>
-            <a href="clinicasprox.html">Clínicas</a>
-            <a href="diagnostico.html">Identificação</a>
-            <a href="chat.html">Chat Comunidade</a>
-            <a href="login.html" class="entrar">Entrar</a>
-            <a href="cadastro.html" class="cadastrar">Cadastrar</a>
-        </nav>
     </header>
+
 
     <main>
         <section class="hero-section">
@@ -322,131 +323,147 @@
     </footer>
 
     <script>
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('nav').classList.toggle('active');
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Script do Menu Hambúrguer ---
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
 
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.menu-toggle').classList.remove('active');
-                document.querySelector('nav').classList.remove('active');
-            });
-        });
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    menuToggle.classList.toggle('active');
+                    mainNav.classList.toggle('active');
+                });
 
-        // Dados dos profissionais
-        const profissionaisData = {
-            'fonoaudiologo': {
-                titulo: 'Fonoaudiólogo',
-                subtitulo: 'Comunicação e Linguagem',
-                descricao: 'Desenvolve habilidades de comunicação verbal e não verbal, trabalhando fala, linguagem e deglutição.',
-                areas: [
-                    'Desenvolvimento da fala',
-                    'Comunicação alternativa',
-                    'Processamento auditivo',
-                    'Habilidades sociais de comunicação'
-                ],
-                icone: '../img/fono-icon.png'
-            },
-            'terapeuta-aba': {
-                titulo: 'Terapeuta ABA',
-                subtitulo: 'Análise do Comportamento',
-                descricao: 'Aplica princípios da análise do comportamento para ensinar novas habilidades e reduzir comportamentos inadequados.',
-                areas: [
-                    'Modificação comportamental',
-                    'Ensino estruturado',
-                    'Habilidades acadêmicas',
-                    'Comportamentos adaptativos'
-                ],
-                icone: '../img/aba-icon.png'
-            },
-            'terapeuta-ocupacional': {
-                titulo: 'Terapeuta Ocupacional',
-                subtitulo: 'Habilidades Funcionais',
-                descricao: 'Desenvolve habilidades motoras, sensoriais e de vida diária para maior independência e qualidade de vida.',
-                areas: [
-                    'Integração sensorial',
-                    'Coordenação motora',
-                    'Atividades de vida diária',
-                    'Adaptação de ambientes'
-                ],
-                icone: '../img/to-icon.png'
-            },
-            'psicologa': {
-                titulo: 'Psicóloga',
-                subtitulo: 'Comportamento e Cognição',
-                descricao: 'Trabalha aspectos comportamentais, emocionais e cognitivos, auxiliando no desenvolvimento de habilidades sociais.',
-                areas: [
-                    'Terapia comportamental',
-                    'Habilidades sociais',
-                    'Regulação emocional',
-                    'Desenvolvimento cognitivo'
-                ],
-                icone: '../img/psicologo-icon.png'
-            },
-            'musicoterapeuta': {
-                titulo: 'Musicoterapeuta',
-                subtitulo: 'Terapia pela Música',
-                descricao: 'Utiliza a música como ferramenta terapêutica para desenvolver comunicação, socialização e expressão.',
-                areas: [
-                    'Expressão emocional',
-                    'Comunicação musical',
-                    'Interação social',
-                    'Coordenação e ritmo'
-                ],
-                icone: '../img/music-icon.png'
-            },
-            'neuropediatra': {
-                titulo: 'Neuropediatra',
-                subtitulo: 'Medicina Especializada',
-                descricao: 'Médico especialista em desenvolvimento neurológico infantil, responsável pelo diagnóstico e acompanhamento médico.',
-                areas: [
-                    'Diagnóstico médico',
-                    'Prescrição medicamentosa',
-                    'Acompanhamento neurológico',
-                    'Coordenação multidisciplinar'
-                ],
-                icone: '../img/neuro-icon.png'
+                // Fecha o menu ao clicar em um link
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            menuToggle.classList.remove('active');
+                        }
+                    });
+                });
             }
-        };
 
-        // Funcionalidade do modal
-        const modal = document.getElementById('profissional-modal');
-        const modalClose = document.querySelector('.modal-close');
-        const saibaMaisBtns = document.querySelectorAll('.saiba-mais');
+            // --- Script do Modal de Profissionais ---
+            const profissionaisData = {
+                'fonoaudiologo': {
+                    titulo: 'Fonoaudiólogo',
+                    subtitulo: 'Comunicação e Linguagem',
+                    descricao: 'Desenvolve habilidades de comunicação verbal e não verbal, trabalhando fala, linguagem e deglutição.',
+                    areas: [
+                        'Desenvolvimento da fala',
+                        'Comunicação alternativa',
+                        'Processamento auditivo',
+                        'Habilidades sociais de comunicação'
+                    ],
+                    icone: '../img/fono-icon.png'
+                },
+                'terapeuta-aba': {
+                    titulo: 'Terapeuta ABA',
+                    subtitulo: 'Análise do Comportamento',
+                    descricao: 'Aplica princípios da análise do comportamento para ensinar novas habilidades e reduzir comportamentos inadequados.',
+                    areas: [
+                        'Modificação comportamental',
+                        'Ensino estruturado',
+                        'Habilidades acadêmicas',
+                        'Comportamentos adaptativos'
+                    ],
+                    icone: '../img/aba-icon.png'
+                },
+                'terapeuta-ocupacional': {
+                    titulo: 'Terapeuta Ocupacional',
+                    subtitulo: 'Habilidades Funcionais',
+                    descricao: 'Desenvolve habilidades motoras, sensoriais e de vida diária para maior independência e qualidade de vida.',
+                    areas: [
+                        'Integração sensorial',
+                        'Coordenação motora',
+                        'Atividades de vida diária',
+                        'Adaptação de ambientes'
+                    ],
+                    icone: '../img/to-icon.png'
+                },
+                'psicologa': {
+                    titulo: 'Psicóloga',
+                    subtitulo: 'Comportamento e Cognição',
+                    descricao: 'Trabalha aspectos comportamentais, emocionais e cognitivos, auxiliando no desenvolvimento de habilidades sociais.',
+                    areas: [
+                        'Terapia comportamental',
+                        'Habilidades sociais',
+                        'Regulação emocional',
+                        'Desenvolvimento cognitivo'
+                    ],
+                    icone: '../img/psicologo-icon.png'
+                },
+                'musicoterapeuta': {
+                    titulo: 'Musicoterapeuta',
+                    subtitulo: 'Terapia pela Música',
+                    descricao: 'Utiliza a música como ferramenta terapêutica para desenvolver comunicação, socialização e expressão.',
+                    areas: [
+                        'Expressão emocional',
+                        'Comunicação musical',
+                        'Interação social',
+                        'Coordenação e ritmo'
+                    ],
+                    icone: '../img/music-icon.png'
+                },
+                'neuropediatra': {
+                    titulo: 'Neuropediatra',
+                    subtitulo: 'Medicina Especializada',
+                    descricao: 'Médico especialista em desenvolvimento neurológico infantil, responsável pelo diagnóstico e acompanhamento médico.',
+                    areas: [
+                        'Diagnóstico médico',
+                        'Prescrição medicamentosa',
+                        'Acompanhamento neurológico',
+                        'Coordenação multidisciplinar'
+                    ],
+                    icone: '../img/neuro-icon.png'
+                }
+            };
 
-        function abrirModal(profissional) {
-            const data = profissionaisData[profissional];
-            document.getElementById('modal-icon-img').src = data.icone;
-            document.getElementById('modal-titulo').textContent = data.titulo;
-            document.getElementById('modal-subtitulo').textContent = data.subtitulo;
-            document.getElementById('modal-descricao').textContent = data.descricao;
-            
-            const areasList = document.getElementById('modal-areas');
-            areasList.innerHTML = '';
-            data.areas.forEach(area => {
-                const li = document.createElement('li');
-                li.textContent = area;
-                areasList.appendChild(li);
-            });
-            
-            modal.classList.add('active');
-        }
+            const modal = document.getElementById('profissional-modal');
+            const modalClose = document.querySelector('.modal-close');
+            const saibaMaisBtns = document.querySelectorAll('.saiba-mais');
 
-        saibaMaisBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const profissional = btn.parentElement.dataset.profissional;
-                abrirModal(profissional);
-            });
-        });
+            function abrirModal(profissional) {
+                const data = profissionaisData[profissional];
+                if (!data) {
+                    console.error('Dados não encontrados para:', profissional);
+                    return;
+                }
+                document.getElementById('modal-icon-img').src = data.icone;
+                document.getElementById('modal-titulo').textContent = data.titulo;
+                document.getElementById('modal-subtitulo').textContent = data.subtitulo;
+                document.getElementById('modal-descricao').textContent = data.descricao;
+                
+                const areasList = document.getElementById('modal-areas');
+                areasList.innerHTML = '';
+                data.areas.forEach(area => {
+                    const li = document.createElement('li');
+                    li.textContent = area;
+                    areasList.appendChild(li);
+                });
+                
+                modal.classList.add('active');
+            }
 
-        modalClose.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
+            if (modal && modalClose && saibaMaisBtns.length > 0) {
+                saibaMaisBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const profissional = btn.parentElement.dataset.profissional;
+                        abrirModal(profissional);
+                    });
+                });
 
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
+                modalClose.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+
+                window.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
             }
         });
     </script>

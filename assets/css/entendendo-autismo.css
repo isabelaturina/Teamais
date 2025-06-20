@@ -3,172 +3,164 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
-}
-
-body {
-    min-height: 100vh;
+  }
+  
+  body {
     background-color: #f5f8fa;
-}
-
-/* Header */
-header {
-    background-color: #fff;
-    padding: 1rem 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Header */
+  header {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(112, 222, 254, 0.10);
     position: sticky;
     top: 0;
     z-index: 10;
-    height: 80px;
-}
-
-header .logo {
+  }
+  
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2vw;
+    height: 60px;
+  }
+  
+  .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-header .logo img {
-    height: 40px;
-}
-
-header .logo span {
-    font-size: 1.5rem;
+  }
+  
+  .logo img {
+    height: 32px;
+    margin-left: -25px; /* Ajuste conforme a necessidade do seu logo */
+  }
+  
+  .logo span {
+    font-size: 1.3rem;
     font-weight: bold;
-    color: #0066cc;
-}
-
-header nav {
+    color: #0095FF;
+    letter-spacing: 1px;
+  }
+  
+  .main-nav {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-}
-
-header nav a {
+    flex: 1;
+    justify-content: center;
+  }
+  
+  .main-nav a {
     text-decoration: none;
-    color: #333;
+    color: #222;
     font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-header nav a:hover {
-    color: #0066cc;
-}
-
-header nav .entrar {
-    padding: 0.5rem 1.5rem;
-    border: 2px solid #0066cc;
+    font-size: 1rem;
+    transition: color 0.2s;
+    padding: 0.2rem 0.5rem;
+    white-space: nowrap;
+  }
+  
+  .main-nav a:hover {
+    color: #0095FF;
+  }
+  
+  /* Estilos para os botões Entrar e Cadastrar (dentro do main-nav agora) */
+  .main-nav .entrar,
+  .main-nav .cadastrar {
+    margin-left: 1rem; /* Espaçamento entre os links normais e os botões */
+  }
+  
+  .entrar {
+    padding: 0.35rem 1.1rem;
+    border: 2px solid #0095FF;
     border-radius: 20px;
-    color: #0066cc;
-}
-
-header nav .cadastrar {
-    padding: 0.5rem 1.5rem;
+    color: #0095FF !important;
+    background: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+    text-decoration: none;
+  }
+  
+  .entrar:hover {
+    background: #e6f3ff;
+    color: #0095FF !important;
+  }
+  
+  .cadastrar {
+    padding: 0.35rem 1.1rem;
     background-color: #0095FF;
     border-radius: 20px;
-    color: white;
-    position: relative;
-    transition: all 0.4s ease;
-    font-weight: 600;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
     border: none;
+    position: relative;
     overflow: hidden;
-}
-
-header nav .cadastrar::before {
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    text-decoration: none;
+  }
+  
+  .cadastrar::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.6),
-        transparent
-    );
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
     transition: 0.5s;
-}
-
-header nav .cadastrar:hover {
+  }
+  
+  .cadastrar:hover {
     background-color: #33AAFF;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 149, 255, 0.3);
-}
-
-header nav .cadastrar:hover::before {
+    box-shadow: 0 5px 15px rgba(0, 149, 255, 0.15);
+  }
+  
+  .cadastrar:hover::before {
     left: 100%;
-}
-
-/* Menu Toggle */
-.menu-toggle {
-    display: none;
+  }
+  
+  /* Menu Toggle (botão de hambúrguer) */
+  .menu-toggle {
+    display: none; /* Oculto por padrão em desktop */
     flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    position: relative;
-}
-
-.menu-toggle span {
+    justify-content: space-between;
     width: 25px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 10; /* Garante que o ícone esteja acima do menu */
+  }
+  
+  .menu-toggle span {
+    display: block;
+    width: 100%;
     height: 2px;
-    background-color: #0066cc;
-    transition: all 0.3s ease;
-}
-
-.menu-toggle.active span {
-    display: none;
-}
-
-.menu-toggle.active::before {
-    content: "♥";
-    position: absolute;
-    color: #0066cc;
-    font-size: 24px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: heartBeat 1.3s infinite;
-}
-
-@keyframes heartBeat {
-    0%, 28%, 70% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-    14%, 42% {
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-}
-
-/* Menu Mobile */
-@media (max-width: 768px) {
-    header nav {
-        display: none;
-        position: fixed;
-        top: 80px;
-        left: 0;
-        right: 0;
-        background: white;
-        padding: 2rem;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    header nav.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-}
-
+    background: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Animação do botão de hambúrguer para 'X' */
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  
 /* Hero Section */
 .hero-section {
     background: linear-gradient(135deg, #0095ff, #00bfff);
@@ -393,6 +385,10 @@ header nav .cadastrar:hover::before {
 .accordion-arrow {
     color: #0095ff;
     transition: transform 0.3s ease;
+}
+
+.accordion-item.active .accordion-arrow {
+    transform: rotate(180deg);
 }
 
 .accordion-content {
@@ -833,7 +829,29 @@ header nav .cadastrar:hover::before {
     color: #CCCC00;
 }
 
-/* Responsividade */
+/* Responsividade Geral */
+@media (min-width: 1400px) {
+    header {
+        padding: 1rem 10%;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+    header {
+        padding: 1rem 8%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    header {
+        padding: 1rem 5%;
+    }
+    
+    .main-nav {
+        gap: 1.2rem;
+    }
+}
+
 @media (max-width: 1200px) {
     .hero-content h1 {
         font-size: 3rem;
@@ -845,9 +863,119 @@ header nav .cadastrar:hover::before {
     }
 }
 
+@media (max-width: 991px) {
+    .header-container {
+        padding: 0 5%;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #fff;
+        padding: 2rem 0;
+        align-items: center;
+        overflow-y: auto;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+        margin-left: 0;
+    }
+
+    .main-nav.active {
+        display: flex;
+        transform: translateY(0);
+    }
+
+    .main-nav a {
+        padding: 1rem 1.5rem;
+        width: 90%;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .main-nav a:last-child {
+        border-bottom: none;
+    }
+
+    .main-nav .entrar,
+    .main-nav .cadastrar {
+        margin: 1rem auto;
+        width: 80%;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+
+    .footer-section:first-child {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    .footer-section:first-child .logo-footer {
+        justify-content: center;
+    }
+
+    .footer-section nav {
+        align-items: center;
+    }
+}
+
 @media (max-width: 768px) {
+    .main-nav {
+        display: none; /* Esconde o menu de navegação em telas menores */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Abaixo do header */
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
+        align-items: center;
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-100%); /* Esconde o menu para fora da tela */
+    }
+  
+    .main-nav.active {
+        display: flex; /* Mostra o menu quando ativo */
+        transform: translateY(0); /* Desliza o menu para a posição */
+    }
+  
+    .main-nav a {
+        padding: 0.8rem 1rem;
+        width: 90%;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+  
+    .main-nav a:last-child {
+        border-bottom: none;
+    }
+  
+    .menu-toggle {
+        display: flex; /* Mostra o botão de hambúrguer em telas menores */
+    }
+
     .hero-section {
+        flex-direction: column;
+        text-align: center;
         padding: 3rem 1.5rem;
+        min-height: auto;
+    }
+
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 2rem;
     }
 
     .hero-content h1 {
@@ -952,87 +1080,7 @@ header nav .cadastrar:hover::before {
     .faq-item.active .faq-answer {
         padding: 0 1.2rem 1.2rem 1.2rem;
     }
-}
 
-/* Footer */
-.footer {
-    background-color: #0066cc;
-    color: white;
-    padding: 3rem 5%;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-section .logo-footer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 1rem;
-}
-
-.footer-section .logo-footer img {
-    height: 40px;
-}
-
-.footer-section .logo-footer span {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
-}
-
-.footer-section p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    opacity: 0.8;
-}
-
-.footer-section h4 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: white;
-}
-
-.footer-section nav {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.footer-section nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: opacity 0.3s ease;
-}
-
-.footer-section nav a:hover {
-    opacity: 0.7;
-}
-
-/* Responsividade do Footer */
-@media (max-width: 991px) {
-    .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 3rem;
-    }
-
-    .footer-section:first-child {
-        grid-column: 1 / -1;
-        text-align: center;
-    }
-
-    .footer-section:first-child .logo-footer {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 767px) {
     .footer-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -1049,7 +1097,20 @@ header nav .cadastrar:hover::before {
 }
 
 @media (max-width: 480px) {
+    header .logo img {
+        height: 32px;
+    }
+    header .logo span {
+        font-size: 1.2rem;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .explore-recursos h2,
+    .quem-somos h2 {
+        font-size: 1.8rem;
+    }
     .footer {
         padding: 2rem 1.5rem;
     }
-} 
+}

@@ -3,40 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melhore sua experiência</title>
-    <link rel="stylesheet" href="perfil.css">
+    <title>Melhore sua experiência - TeamAIS</title>
+    <link rel="stylesheet" href="../assets/css/perfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <div class="left-side">
-          <img src="img/logo.png" alt="logo">
-            <h2>Aqui, cada detalhe importa!
-            Compartilhe um pouco sobre você para tornar sua experiência mais
-             personalizada.</h2>
+            <div class="infinity-icon">
+                <img src="../img/logo.png" alt="Logo Infinito" class="logo-img">
+            </div>
+            <h2>Aqui, cada detalhe importa!</h2>
+            <p>Compartilhe um pouco sobre você para tornar sua experiência mais personalizada.</p>
         </div>
         <div class="right-side">
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar</a>
             <h2>Melhore sua experiência</h2>
-            <form>
+            <form id="perfilForm">
                 <div class="form-group">
                     <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome">
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" required placeholder="Digite seu email">
                 </div>
-                <div class="form-group password-input-wrapper">
+                <div class="form-group">
                     <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha">
-                    
+                    <div class="password-input-wrapper">
+                        <input type="password" id="senha" name="senha" required placeholder="Crie ou atualize sua senha">
+                        <button type="button" class="toggle-password" aria-label="Mostrar senha">
+                            <i class="fas fa-eye-slash"></i>
+                        </button>
+                    </div>
                 </div>
-                <button><a href="index.html" type="submit">avançar</button></a>
+                <button type="submit">Avançar</button>
+                <div class="login-link">
+                    <a href="login.html">Já tem uma conta? Entrar</a>
+                </div>
             </form>
-            <p class="login-link">Já tenho uma conta - <a href="cadastro.html">Entrar</a></p>
         </div>
     </div>
     
-    <script src="script.js"></script>
-  
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>
